@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { fadeUp, staggerContainer } from '../animations/transitions'
+import engrenagensDenteImage from '../assets/engrenagensDente.avif'
 import engrenagensImage from '../assets/engrenagens.avif'
 import prcPersonImage from '../assets/pcr-person.avif'
 import { PATHS } from '../routers/paths'
@@ -25,6 +26,59 @@ const CERTIFICATIONS = [
     label: 'ISO',
     detail: '9001:2015',
     className: 'certification-iso',
+  },
+]
+
+const HOME_SERVICES = [
+  {
+    title: 'Usinagem pesada',
+    description:
+      'Peças e componentes para aplicações industriais, com foco em robustez e precisão.',
+  },
+  {
+    title: 'Usinagem em geral',
+    description:
+      'Fabricação e usinagem de itens sob demanda, conforme necessidade do cliente.',
+    featured: true,
+  },
+  {
+    title: 'Peças sob medida',
+    description: 'Produção conforme desenho técnico, projeto ou amostra.',
+    featured: true,
+  },
+  {
+    title: 'Fabricação de componentes',
+    description:
+      'Soluções para substituição e reposição de peças em equipamentos.',
+  },
+]
+
+const HOME_SEGMENTS = [
+  'Metalúrgica e manutenção industrial',
+  'Usinas e agroindústria',
+  'Indústrias da região de Sertãozinho e entorno',
+  'Empresas com demanda de peças sob medida',
+]
+
+const HOME_MANUFACTURED_PARTS = [
+  {
+    title: 'Eixos',
+    description: '(rotor, ventilador, mesa, esteirão)',
+  },
+  {
+    title: 'Buchas de bronze',
+  },
+  {
+    title: 'Engrenagens e polias',
+  },
+  {
+    title: 'Anéis e componentes diversos',
+  },
+  {
+    title: 'Abertura e fechamento de trocadores',
+  },
+  {
+    title: 'Saca pinos',
   },
 ]
 
@@ -119,6 +173,83 @@ export function HomePage() {
           </motion.p>
         </motion.div>
       </motion.article>
+
+      <motion.section className="home-services-section" variants={staggerContainer}>
+        <motion.h2 className="home-services-title" variants={fadeUp}>
+          O que a PRC faz
+        </motion.h2>
+
+        <motion.div className="home-services-grid" variants={staggerContainer}>
+          {HOME_SERVICES.map((service) => (
+            <motion.article
+              className={`home-service-card${
+                service.featured ? ' home-service-card-dark' : ''
+              }`}
+              key={service.title}
+              variants={fadeUp}
+            >
+              <span className="home-service-dot" aria-hidden="true" />
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <Link to={PATHS.TALK_TO_US}>Solicitar Orçamento</Link>
+            </motion.article>
+          ))}
+        </motion.div>
+      </motion.section>
+
+      <motion.section className="home-segments-section" variants={staggerContainer}>
+        <motion.header className="home-segments-header" variants={fadeUp}>
+          <div>
+            <p className="home-segments-label">Segmentos</p>
+            <h2>Segmentos atendidos</h2>
+          </div>
+          <p>Atendemos diferentes áreas da indústria</p>
+        </motion.header>
+
+        <motion.div className="home-segments-showcase" variants={staggerContainer}>
+          <motion.ul className="home-segments-list" variants={staggerContainer}>
+            {HOME_SEGMENTS.map((segment) => (
+              <motion.li key={segment} variants={fadeUp}>
+                {segment}
+              </motion.li>
+            ))}
+          </motion.ul>
+
+          <motion.figure className="home-segments-image" variants={fadeUp}>
+            <img
+              src={engrenagensDenteImage}
+              alt="Componente industrial usinado para segmentos atendidos pela PRC"
+            />
+          </motion.figure>
+        </motion.div>
+      </motion.section>
+
+      <motion.section
+        className="home-parts-section"
+        variants={staggerContainer}
+      >
+        <motion.div className="home-parts-heading" variants={fadeUp}>
+          <p className="home-parts-label">Nossos serviços</p>
+          <h2>Peças fabricadas</h2>
+        </motion.div>
+
+        <motion.div className="home-parts-grid" variants={staggerContainer}>
+          {HOME_MANUFACTURED_PARTS.map((part) => (
+            <motion.article
+              className="home-part-card"
+              key={part.title}
+              variants={fadeUp}
+            >
+              <img src={engrenagensDenteImage} alt="" aria-hidden="true" />
+              <div>
+                <span className="home-part-dot" aria-hidden="true" />
+                <h3>{part.title}</h3>
+                {part.description && <p>{part.description}</p>}
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
+      </motion.section>
     </motion.section>
   )
 }
