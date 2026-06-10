@@ -1,9 +1,10 @@
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { fadeUp, staggerContainer } from '../animations/transitions'
-import engrenagensDenteImage from '../assets/engrenagensDente.avif'
 import engrenagensImage from '../assets/engrenagens.avif'
 import prcPersonImage from '../assets/pcr-person.avif'
+import { SegmentsSection } from '../components/SegmentsSection'
+import { SolutionsSection } from '../components/SolutionsSection'
 import { PATHS } from '../routers/paths'
 
 const CERTIFICATIONS = [
@@ -53,33 +54,11 @@ const HOME_SERVICES = [
   },
 ]
 
-const HOME_SEGMENTS = [
-  'Metalúrgica e manutenção industrial',
-  'Usinas e agroindústria',
-  'Indústrias da região de Sertãozinho e entorno',
-  'Empresas com demanda de peças sob medida',
-]
-
-const HOME_MANUFACTURED_PARTS = [
-  {
-    title: 'Eixos',
-    description: '(rotor, ventilador, mesa, esteirão)',
-  },
-  {
-    title: 'Buchas de bronze',
-  },
-  {
-    title: 'Engrenagens e polias',
-  },
-  {
-    title: 'Anéis e componentes diversos',
-  },
-  {
-    title: 'Abertura e fechamento de trocadores',
-  },
-  {
-    title: 'Saca pinos',
-  },
+const HOME_PROCESS_STEPS = [
+  'Você envia projeto, desenho ou amostra',
+  'Analisamos material, tolerâncias e prazo',
+  'Usinamos com controle de qualidade',
+  'Entregamos com segurança e pontualidade',
 ]
 
 export function HomePage() {
@@ -197,55 +176,42 @@ export function HomePage() {
         </motion.div>
       </motion.section>
 
-      <motion.section className="home-segments-section" variants={staggerContainer}>
-        <motion.header className="home-segments-header" variants={fadeUp}>
-          <div>
-            <p className="home-segments-label">Segmentos</p>
-            <h2>Segmentos atendidos</h2>
-          </div>
-          <p>Atendemos diferentes áreas da indústria</p>
-        </motion.header>
+      <SegmentsSection />
 
-        <motion.div className="home-segments-showcase" variants={staggerContainer}>
-          <motion.ul className="home-segments-list" variants={staggerContainer}>
-            {HOME_SEGMENTS.map((segment) => (
-              <motion.li key={segment} variants={fadeUp}>
-                {segment}
-              </motion.li>
-            ))}
-          </motion.ul>
-
-          <motion.figure className="home-segments-image" variants={fadeUp}>
-            <img
-              src={engrenagensDenteImage}
-              alt="Componente industrial usinado para segmentos atendidos pela PRC"
-            />
-          </motion.figure>
-        </motion.div>
-      </motion.section>
+      <SolutionsSection />
 
       <motion.section
-        className="home-parts-section"
+        className="home-process-section"
         variants={staggerContainer}
       >
-        <motion.div className="home-parts-heading" variants={fadeUp}>
-          <p className="home-parts-label">Nossos serviços</p>
-          <h2>Peças fabricadas</h2>
-        </motion.div>
+        <motion.header className="home-process-header" variants={fadeUp}>
+          <div>
+            <p className="home-process-label">Processos</p>
+            <h2>
+              Como
+              <br />
+              trabalhamos
+            </h2>
+          </div>
 
-        <motion.div className="home-parts-grid" variants={staggerContainer}>
-          {HOME_MANUFACTURED_PARTS.map((part) => (
+          <div className="home-process-intro">
+            <p>
+              Um pouco sobre o nosso processo de trabalho, e como podemos te
+              ajudar da melhor forma!
+            </p>
+            <Link to={PATHS.TALK_TO_US}>Solicitar Orçamento</Link>
+          </div>
+        </motion.header>
+
+        <motion.div className="home-process-grid" variants={staggerContainer}>
+          {HOME_PROCESS_STEPS.map((step, index) => (
             <motion.article
-              className="home-part-card"
-              key={part.title}
+              className="home-process-card"
+              key={step}
               variants={fadeUp}
             >
-              <img src={engrenagensDenteImage} alt="" aria-hidden="true" />
-              <div>
-                <span className="home-part-dot" aria-hidden="true" />
-                <h3>{part.title}</h3>
-                {part.description && <p>{part.description}</p>}
-              </div>
+              <span>{index + 1}</span>
+              <p>{step}</p>
             </motion.article>
           ))}
         </motion.div>
