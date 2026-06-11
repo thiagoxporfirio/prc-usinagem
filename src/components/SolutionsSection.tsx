@@ -24,7 +24,7 @@ export function SolutionsSection({ className = '' }: SolutionsSectionProps) {
           <motion.article
             className={`home-part-card${
               part.featured ? ' home-part-card-featured' : ''
-            }${part.layout ? ` home-part-card-${part.layout}` : ''}`}
+            }${part.layout ? ` home-part-card-${part.layout}` : ''} home-part-card-${part.slug}`}
             key={part.title}
             variants={fadeUp}
           >
