@@ -7,65 +7,61 @@ type ServiceGallery = {
   galleryImages: string[]
 }
 
-function loadImages(modules: Record<string, string>) {
-  return Object.entries(modules)
-    .sort(([pathA], [pathB]) => pathA.localeCompare(pathB))
-    .map(([, image]) => image)
+const serviceImageModules = import.meta.glob<string>(
+  '../assets/**/*.{jpg,jpeg,JPG,JPEG,png,PNG}',
+  {
+    eager: true,
+    import: 'default',
+    query: '?url',
+  },
+)
+
+function normalizePath(path: string) {
+  return path
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
 }
 
-const usinagemImages = loadImages(
-  import.meta.glob<string>(
-    '../assets/USINAGEM/*.{jpg,jpeg,JPG,JPEG,png,PNG}',
-    {
-      eager: true,
-      import: 'default',
-      query: '?url',
-    },
-  ),
+function loadServiceImages(directoryName: string, coverFileName: string) {
+  const directoryPath = `/${normalizePath(directoryName)}/`
+  const coverPath = `/${normalizePath(coverFileName)}`
+  const entries = Object.entries(serviceImageModules)
+    .filter(([path]) => normalizePath(path).includes(directoryPath))
+    .sort(([pathA], [pathB]) =>
+      pathA.localeCompare(pathB, undefined, { numeric: true }),
+    )
+
+  const coverEntry = entries.find(([path]) =>
+    normalizePath(path).endsWith(coverPath),
+  )
+  const orderedEntries = coverEntry
+    ? [coverEntry, ...entries.filter(([path]) => path !== coverEntry[0])]
+    : entries
+
+  return orderedEntries.map(([, image]) => image)
+}
+
+const usinagemImages = loadServiceImages('USINAGEM', 'Usinagem.jpg')
+
+const maquinasImages = loadServiceImages(
+  'MÁQUINAS ALTAMENTE CAPACITADAS',
+  'Torno.jpg',
 )
 
-const maquinasImages = loadImages(
-  import.meta.glob<string>(
-    '../assets/MÁQUINAS ALTAMENTE CAPACITADAS/*.{jpg,jpeg,JPG,JPEG,png,PNG}',
-    {
-      eager: true,
-      import: 'default',
-      query: '?url',
-    },
-  ),
+const caldeirariaImages = loadServiceImages(
+  'Caldeiraria',
+  'WhatsApp Image 2026-05-29 at 07.27.24 (3).jpeg',
 )
 
-const caldeirariaImages = loadImages(
-  import.meta.glob<string>(
-    '../assets/Caldeiraria/*.{jpg,jpeg,JPG,JPEG,png,PNG}',
-    {
-      eager: true,
-      import: 'default',
-      query: '?url',
-    },
-  ),
+const equipamentosImages = loadServiceImages(
+  'EQUIPAMENTO DE AUTOMATIZAÇÃO HIDRÁULICA',
+  'Central.JPG',
 )
 
-const equipamentosImages = loadImages(
-  import.meta.glob<string>(
-    '../assets/EQUIPAMENTO DE AUTOMATIZAÇÃO HIDRÁULICA/*.{jpg,jpeg,JPG,JPEG,png,PNG}',
-    {
-      eager: true,
-      import: 'default',
-      query: '?url',
-    },
-  ),
-)
-
-const reformaImages = loadImages(
-  import.meta.glob<string>(
-    '../assets/REFORMA E FABRICAÇÃO DE EQUIPAMENTOS/*.{jpg,jpeg,JPG,JPEG,png,PNG}',
-    {
-      eager: true,
-      import: 'default',
-      query: '?url',
-    },
-  ),
+const reformaImages = loadServiceImages(
+  'REFORMA E FABRICAÇÃO DE EQUIPAMENTOS',
+  'Engrenagens.jpg',
 )
 
 function createServiceGallery(

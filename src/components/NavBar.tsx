@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router-dom'
+import logoWhite from '../assets/LogoBranca.svg'
+import logoBlue from '../assets/Logoazul.svg'
 import { PATHS } from '../routers/paths'
 
 const NAV_ITEMS = [
@@ -13,7 +15,17 @@ export function NavBar() {
   return (
     <nav className="top-nav" aria-label="Navegacao principal">
       <NavLink to={PATHS.HOME} className="logo" end>
-        PRC
+        <img
+          className="logo-image logo-image-blue"
+          src={logoBlue}
+          alt="PRC Usinagem"
+        />
+        <img
+          className="logo-image logo-image-white"
+          src={logoWhite}
+          alt=""
+          aria-hidden="true"
+        />
       </NavLink>
 
       <div className="nav-links">

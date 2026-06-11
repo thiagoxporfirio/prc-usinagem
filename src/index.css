@@ -88,16 +88,28 @@ a {
 }
 
 .logo {
-  font-family: 'Rajdhani', 'Arial Narrow', sans-serif;
-  font-size: clamp(1.45rem, 2vw, 2rem);
-  letter-spacing: -0.1em;
-  font-weight: 900;
-  color: #18244d;
-  text-transform: uppercase;
+  width: clamp(7.5rem, 10vw, 10.5rem);
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
 }
 
-.home-header .logo {
-  color: var(--white);
+.logo-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.logo-image-white {
+  display: none;
+}
+
+.home-header .logo-image-blue {
+  display: none;
+}
+
+.home-header .logo-image-white {
+  display: block;
   filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.55));
 }
 
@@ -836,7 +848,7 @@ a {
 }
 
 .home-parts-section {
-  margin-top: clamp(5rem, 7.2vw, 7.6rem);
+  margin-top: clamp(4.2rem, 6vw, 6.4rem);
   color: #08090b;
 }
 
@@ -875,24 +887,23 @@ a {
 }
 
 .home-parts-grid {
-  margin-top: clamp(4rem, 6vw, 6.5rem);
+  margin-top: clamp(2.6rem, 4vw, 4.2rem);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: clamp(1.3rem, 2vw, 2rem);
+  gap: clamp(0.85rem, 1.25vw, 1.25rem);
 }
 
 .home-part-card {
-  min-height: clamp(330px, 28vw, 430px);
+  height: clamp(380px, 28vw, 480px);
   grid-column: span 6;
   overflow: hidden;
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr) clamp(5.3rem, 5.8vw, 6.3rem);
   border-radius: clamp(1.1rem, 1.55vw, 1.55rem);
   background: var(--white);
 }
 
 .home-part-card-featured {
-  min-height: clamp(430px, 34vw, 560px);
   grid-column: 1 / -1;
 }
 
@@ -911,28 +922,28 @@ a {
 .home-part-card img {
   width: 100%;
   height: 100%;
-  min-height: clamp(250px, 22vw, 360px);
+  min-height: 0;
   display: block;
   object-fit: cover;
   object-position: center;
 }
 
 .home-part-card-featured img {
-  min-height: clamp(300px, 25vw, 395px);
+  min-height: 0;
 }
 
 .home-part-card footer {
-  min-height: clamp(6.4rem, 7.4vw, 8rem);
-  padding: clamp(1rem, 1.7vw, 1.65rem) clamp(1.25rem, 2.4vw, 2.3rem);
+  min-height: 0;
+  padding: clamp(0.75rem, 1.15vw, 1.05rem) clamp(0.9rem, 1.6vw, 1.5rem);
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: clamp(1rem, 1.55vw, 1.55rem);
+  gap: clamp(0.7rem, 1vw, 1rem);
   align-items: center;
 }
 
 .home-part-dot {
-  width: clamp(4.1rem, 5.5vw, 5.5rem);
-  height: clamp(4.1rem, 5.5vw, 5.5rem);
+  width: clamp(2.9rem, 3.8vw, 3.85rem);
+  height: clamp(2.9rem, 3.8vw, 3.85rem);
   border-radius: 50%;
   background: #18244d;
 }
@@ -1933,29 +1944,24 @@ a.contact-item:hover {
   }
 
   .home-parts-section {
-    margin-top: 4rem;
+    margin-top: 3.4rem;
   }
 
   .home-parts-grid {
     grid-template-columns: 1fr;
-    margin-top: 2.4rem;
-    gap: 1.2rem;
+    margin-top: 1.8rem;
+    gap: 0.85rem;
   }
 
   .home-part-card,
   .home-part-card-featured {
-    min-height: 0;
+    height: 390px;
     grid-column: auto;
-  }
-
-  .home-part-card img,
-  .home-part-card-featured img {
-    min-height: 240px;
+    grid-template-rows: minmax(0, 1fr) 5.6rem;
   }
 
   .home-part-card footer {
-    min-height: 6.1rem;
-    padding: 1rem 1.15rem;
+    padding: 0.8rem 0.9rem;
   }
 
   .home-process-section {
