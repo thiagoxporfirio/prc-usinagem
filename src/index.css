@@ -329,13 +329,10 @@ a {
 }
 
 .footer-brand {
+  display: block;
+  width: clamp(7rem, 12vw, 10rem);
+  height: auto;
   margin: 0;
-  font-family: 'Rajdhani', 'Arial Narrow', sans-serif;
-  letter-spacing: -0.1em;
-  color: #18244d;
-  font-size: clamp(2.4rem, 4vw, 4.5rem);
-  font-weight: 900;
-  line-height: 0.85;
 }
 
 .footer-copy {

@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { LuArrowUpRight, LuMail, LuMapPin, LuPhone } from 'react-icons/lu'
+import footerLogo from '../assets/Logoazul.svg'
 import { PATHS } from '../routers/paths'
 
 export function Footer() {
@@ -26,7 +27,7 @@ export function Footer() {
 
         <div className="footer-grid">
           <section className="footer-brand-column">
-            <p className="footer-brand">PRC</p>
+            <img className="footer-brand" src={footerLogo} alt="PRC Usinagem" />
             <p className="footer-copy">
               Usinagem industrial, peças sob medida e soluções técnicas para
               empresas que precisam de qualidade, prazo e confiança.
