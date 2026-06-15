@@ -18,7 +18,7 @@ export function AboutPage() {
             <span>Fundada</span>
           </motion.p>
           <motion.p className="about-kpi" variants={fadeUp}>
-            <span className="about-kpi-value">+25</span>
+            <span className="about-kpi-value">+35</span>
             <span>Anos de atuação no mercado</span>
           </motion.p>
         </motion.div>
@@ -36,17 +36,17 @@ export function AboutPage() {
               Sobre a PRC
             </motion.p>
             <motion.h1 className="about-title" variants={fadeUp}>
-              Usinagem industrial
+              Usinagem e caldeiraria
               <br />
               com foco em qualidade
               <br />
               e prazo
             </motion.h1>
             <motion.p className="about-text" variants={fadeUp}>
-              A PRC Usinagem atua em Sertãozinho/SP com usinagem pesada e
-              usinagem em geral, fabricando peças e componentes industriais
-              conforme projeto ou amostra. Nosso objetivo é entregar soluções
-              com precisão, confiabilidade e pontualidade.
+              A PRC Usinagem atua em Sertãozinho/SP com usinagem pesada,
+              usinagem em geral e caldeiraria, fabricando peças e componentes
+              industriais conforme projeto ou amostra. Nosso objetivo é
+              entregar soluções com precisão, confiabilidade e pontualidade.
             </motion.p>
 
             <motion.img
@@ -72,7 +72,7 @@ export function AboutPage() {
           profissional e modernização de seu parque fabril.
         </motion.p>
         <motion.p className="about-history-text" variants={fadeUp}>
-          Com mais de 30 anos de história, a PRC construiu sua trajetória
+          Com mais de 35 anos de história, a PRC construiu sua trajetória
           baseada em qualidade, precisão, pontualidade e compromisso com seus
           clientes, atendendo projetos industriais sob medida para diversos
           segmentos do mercado.

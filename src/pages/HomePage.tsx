@@ -1,32 +1,26 @@
 import { motion } from 'motion/react'
-import { Link } from 'react-router-dom'
 import { fadeUp, staggerContainer } from '../animations/transitions'
 import engrenagensImage from '../assets/engrenagens.avif'
 import prcPersonImage from '../assets/pcr-person.avif'
+import inetSeal from '../assets/selos/inet.jpeg'
+import isoSeal from '../assets/selos/iso9001.jpeg'
+import petroSeal from '../assets/selos/petro.jpeg'
 import { SegmentsSection } from '../components/SegmentsSection'
 import { SolutionsSection } from '../components/SolutionsSection'
-import { PATHS } from '../routers/paths'
+import { BUDGET_WHATSAPP } from '../data/contact'
 
 const CERTIFICATIONS = [
   {
-    label: 'CRC',
-    detail: 'PETROBRAS',
-    className: 'certification-petrobras',
+    label: 'CRC Petrobras',
+    image: petroSeal,
   },
   {
-    label: 'DQS',
-    detail: 'Certified',
-    className: 'certification-dqs',
+    label: 'IQNet Management System',
+    image: inetSeal,
   },
   {
-    label: 'IQNet',
-    detail: 'Management System',
-    className: 'certification-iqnet',
-  },
-  {
-    label: 'ISO',
-    detail: '9001:2015',
-    className: 'certification-iso',
+    label: 'ISO 9001',
+    image: isoSeal,
   },
 ]
 
@@ -71,31 +65,30 @@ export function HomePage() {
     >
       <motion.article className="home-hero" variants={fadeUp}>
         <div className="hero-copy-block">
-          <p className="eyebrow">Usinagem • Peças Industriais</p>
+          <p className="eyebrow">Usinagem • Caldeiraria • Peças Industriais</p>
           <h1 className="hero-title">
-            Usinagem
+            Usinagem e Caldeiraria
             <br />
-            com precisão
+            de Precisão
           </h1>
         </div>
 
         <aside className="hero-highlight">
           <h2>Qualidade que fala por si</h2>
           <p>
-            A PRC Usinagem, de Sertãozinho/SP, atua com usinagem pesada e
-            usinagem em geral, fabricando peças e componentes industriais
-            conforme projeto ou amostra, com foco em qualidade, prazo e
-            confiança.
+            A PRC Usinagem, de Sertãozinho/SP, atua com usinagem pesada,
+            usinagem em geral e caldeiraria, fabricando peças e componentes
+            industriais conforme projeto ou amostra, com foco em qualidade,
+            prazo e confiança.
           </p>
           <div className="certification-strip" aria-label="Certificações">
             {CERTIFICATIONS.map((certification) => (
-              <span
-                className={`certification-badge ${certification.className}`}
+              <img
+                className="certification-badge"
                 key={certification.label}
-              >
-                <strong>{certification.label}</strong>
-                <small>{certification.detail}</small>
-              </span>
+                src={certification.image}
+                alt={certification.label}
+              />
             ))}
           </div>
         </aside>
@@ -115,7 +108,7 @@ export function HomePage() {
           </motion.p>
 
           <motion.h2 className="home-about-title" variants={fadeUp}>
-            Usinagem industrial
+            Usinagem e caldeiraria
             <br />
             com foco em qualidade
             <br />
@@ -123,14 +116,16 @@ export function HomePage() {
           </motion.h2>
 
           <motion.p className="home-about-text" variants={fadeUp}>
-            A PRC Usinagem atua em Sertãozinho/SP com usinagem pesada e
-            usinagem em geral, fabricando peças e componentes industriais
-            conforme projeto ou amostra. Nosso objetivo é entregar soluções com
-            precisão, confiabilidade e pontualidade.
+            A PRC Usinagem atua em Sertãozinho/SP com usinagem pesada,
+            usinagem em geral e caldeiraria, fabricando peças e componentes
+            industriais conforme projeto ou amostra. Nosso objetivo é entregar
+            soluções com precisão, confiabilidade e pontualidade.
           </motion.p>
 
           <motion.div className="home-about-actions" variants={fadeUp}>
-            <Link to={PATHS.TALK_TO_US}>Solicitar orçamento</Link>
+            <a href={BUDGET_WHATSAPP.href} target="_blank" rel="noreferrer">
+              Solicitar orçamento
+            </a>
           </motion.div>
 
           <motion.img
@@ -147,7 +142,7 @@ export function HomePage() {
             <small>Fundada</small>
           </motion.p>
           <motion.p className="home-about-kpi" variants={fadeUp}>
-            <span>+25</span>
+            <span>+35</span>
             <small>Anos de atuação no mercado</small>
           </motion.p>
         </motion.div>
@@ -170,7 +165,9 @@ export function HomePage() {
               <span className="home-service-dot" aria-hidden="true" />
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <Link to={PATHS.TALK_TO_US}>Solicitar Orçamento</Link>
+              <a href={BUDGET_WHATSAPP.href} target="_blank" rel="noreferrer">
+                Solicitar Orçamento
+              </a>
             </motion.article>
           ))}
         </motion.div>
@@ -199,7 +196,9 @@ export function HomePage() {
               Um pouco sobre o nosso processo de trabalho, e como podemos te
               ajudar da melhor forma!
             </p>
-            <Link to={PATHS.TALK_TO_US}>Solicitar Orçamento</Link>
+            <a href={BUDGET_WHATSAPP.href} target="_blank" rel="noreferrer">
+              Solicitar Orçamento
+            </a>
           </div>
         </motion.header>
 

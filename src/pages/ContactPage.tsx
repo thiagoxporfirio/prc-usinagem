@@ -1,9 +1,19 @@
 import { motion } from 'motion/react'
-import { Link } from 'react-router-dom'
-import { LuArrowUpRight, LuMail, LuMapPin, LuPhone } from 'react-icons/lu'
+import {
+  LuArrowUpRight,
+  LuMail,
+  LuMapPin,
+  LuMessageCircle,
+  LuPhone,
+} from 'react-icons/lu'
 import { fadeUp, staggerContainer } from '../animations/transitions'
 import prcMatrizImage from '../assets/prcMatriz.avif'
-import { PATHS } from '../routers/paths'
+import {
+  BUDGET_WHATSAPP,
+  CONTACT_EMAIL,
+  MAIN_PHONE,
+  SECONDARY_PHONE,
+} from '../data/contact'
 
 const CONTACT_ITEMS = [
   {
@@ -20,14 +30,26 @@ const CONTACT_ITEMS = [
   {
     icon: LuMail,
     label: 'E-mail',
-    content: 'contato@prcusinagem.com.br',
-    href: 'mailto:contato@prcusinagem.com.br',
+    content: CONTACT_EMAIL,
+    href: `mailto:${CONTACT_EMAIL}`,
   },
   {
     icon: LuPhone,
     label: 'Telefone',
-    content: '(16) 3947-9474',
-    href: 'tel:+551639479474',
+    content: (
+      <>
+        {MAIN_PHONE.label}
+        <br />
+        {SECONDARY_PHONE.label}
+      </>
+    ),
+    href: MAIN_PHONE.href,
+  },
+  {
+    icon: LuMessageCircle,
+    label: 'WhatsApp para orçamento',
+    content: BUDGET_WHATSAPP.label,
+    href: BUDGET_WHATSAPP.href,
   },
 ]
 
@@ -96,10 +118,15 @@ export function ContactPage() {
             })}
           </ul>
 
-          <Link to={PATHS.TALK_TO_US} className="contact-budget-link">
+          <a
+            href={BUDGET_WHATSAPP.href}
+            className="contact-budget-link"
+            target="_blank"
+            rel="noreferrer"
+          >
             Solicitar orçamento
             <LuArrowUpRight aria-hidden="true" />
-          </Link>
+          </a>
         </motion.section>
       </motion.div>
 

@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
 import { fadeUp } from '../animations/transitions'
+import { BUDGET_WHATSAPP } from '../data/contact'
 
 export function TalkToUsPage() {
   return (
@@ -11,10 +12,17 @@ export function TalkToUsPage() {
     >
       <h1>Fale Conosco</h1>
       <p>
-        Aqui podemos criar uma pagina dedicada para pedidos de orcamento e
-        atendimento comercial.
+        Solicite seu orçamento pelo WhatsApp {BUDGET_WHATSAPP.label} ou pelo
+        atendimento comercial da PRC.
       </p>
-      <span className="stage-tag">Em construcao inicial</span>
+      <a
+        className="stage-tag"
+        href={BUDGET_WHATSAPP.href}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Solicitar orçamento
+      </a>
     </motion.section>
   )
 }

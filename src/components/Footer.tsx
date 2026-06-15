@@ -1,6 +1,18 @@
 import { Link, useLocation } from 'react-router-dom'
-import { LuArrowUpRight, LuMail, LuMapPin, LuPhone } from 'react-icons/lu'
+import {
+  LuArrowUpRight,
+  LuMail,
+  LuMapPin,
+  LuMessageCircle,
+  LuPhone,
+} from 'react-icons/lu'
 import footerLogo from '../assets/Logoazul.svg'
+import {
+  BUDGET_WHATSAPP,
+  CONTACT_EMAIL,
+  MAIN_PHONE,
+  SECONDARY_PHONE,
+} from '../data/contact'
 import { PATHS } from '../routers/paths'
 
 export function Footer() {
@@ -16,12 +28,17 @@ export function Footer() {
           <div className="footer-cta">
             <div>
               <p className="footer-kicker">Projetos sob medida</p>
-              <h2>Precisa de usinagem com precisão?</h2>
+              <h2>Precisa de usinagem e caldeiraria de precisão?</h2>
             </div>
-            <Link to={PATHS.TALK_TO_US} className="footer-cta-link">
+            <a
+              href={BUDGET_WHATSAPP.href}
+              className="footer-cta-link"
+              target="_blank"
+              rel="noreferrer"
+            >
               Solicitar orçamento
               <LuArrowUpRight aria-hidden="true" />
-            </Link>
+            </a>
           </div>
         )}
 
@@ -29,7 +46,7 @@ export function Footer() {
           <section className="footer-brand-column">
             <img className="footer-brand" src={footerLogo} alt="PRC Usinagem" />
             <p className="footer-copy">
-              Usinagem industrial, peças sob medida e soluções técnicas para
+              Usinagem, caldeiraria, peças sob medida e soluções técnicas para
               empresas que precisam de qualidade, prazo e confiança.
             </p>
           </section>
@@ -46,15 +63,30 @@ export function Footer() {
                 </span>
               </li>
               <li>
-                <a href="mailto:contato@prcusinagem.com.br" className="footer-contact-item">
+                <a href={`mailto:${CONTACT_EMAIL}`} className="footer-contact-item">
                   <LuMail className="footer-icon" aria-hidden="true" />
-                  <span>contato@prcusinagem.com.br</span>
+                  <span>{CONTACT_EMAIL}</span>
                 </a>
               </li>
               <li>
-                <a href="tel:+551639479474" className="footer-contact-item">
+                <a href={MAIN_PHONE.href} className="footer-contact-item">
                   <LuPhone className="footer-icon" aria-hidden="true" />
-                  <span>(16) 3947-9474</span>
+                  <span>
+                    {MAIN_PHONE.label}
+                    <br />
+                    {SECONDARY_PHONE.label}
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={BUDGET_WHATSAPP.href}
+                  className="footer-contact-item"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <LuMessageCircle className="footer-icon" aria-hidden="true" />
+                  <span>{BUDGET_WHATSAPP.label}</span>
                 </a>
               </li>
             </ul>
@@ -86,7 +118,7 @@ export function Footer() {
 
         <div className="footer-bottom">
           <span>© {year} PRC Usinagem</span>
-          <span>Usinagem • Peças Industriais • Sertãozinho/SP</span>
+          <span>Usinagem • Caldeiraria • Peças Industriais • Sertãozinho/SP</span>
         </div>
       </div>
     </footer>

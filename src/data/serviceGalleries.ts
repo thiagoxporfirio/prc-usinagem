@@ -76,7 +76,7 @@ function createServiceGallery(
 export const SERVICE_GALLERIES: ServiceGallery[] = [
   createServiceGallery({
     slug: 'usinagem-com-precisao',
-    title: 'Usinagem com precisão',
+    title: 'Usinagem e Caldeiraria de Precisão',
     featured: true,
     galleryImages: usinagemImages,
   }),
